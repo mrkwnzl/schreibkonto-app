@@ -1,3 +1,7 @@
+button {
+  touch-action: manipulation;
+}
+
 .boxes {
   font-size: 2rem;
 }
