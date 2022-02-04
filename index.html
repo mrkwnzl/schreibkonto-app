@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<html>
+
+<body>
+
+  <h1>Schreibkonto.app</h1>
+  <h2 style="margin: 0 20px 0 0 ">Tag <span id="day"></span></h2>
+  <div>
+    <p style="font-size: 30px; margin: 0;"><span id="boxes"></span></p>
+  </div>
+  <div style="position: absolute; bottom: 10px;">
+    <div>
+      <button type="button" onclick="addEmptyBox();">100 Wörter geschrieben</button>
+      <button type="button" onclick="endDay();">Tag beenden</button>
+      <button type="button" onclick="reset();">Neu starten</button>
+      <button id="removeBoxWidget" type="button" onclick="removeBox();">Leere Box entfernen</button>
+    </div>
+    <div>
+      <input type="text" id="seed" name="seed" placeholder="0-0-0">
+      <button id="loadButton" type="button" value="" onclick="loadState(document.getElementById('seed').value);">Laden</button>
+    </div>
+  </div>
+
+  <script>
+    let day = 1;
+    let boxes = [];
+    let numberBoxesUnchecked = 0;
+    let numberBoxesChecked = 0;
+
+    const ballotBox = "&#9744;";
+    const ballotBoxChecked = "&#9745;";
+
+    const storageIdentifier = "app.schreibkonto.code";
+
+    initializePage();
+
+    document.getElementById("seed").addEventListener("keyup", function (event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("loadButton").click();
+      }
+    });
+
+    function initializePage() {
+      if (!localStorage.getItem(storageIdentifier)) {
+        loadState("1-0-0");
+      } else {
+        loadState(localStorage.getItem(storageIdentifier));
+      }
+      updatePage();
+    }
+
+    function updatePage() {
+      document.getElementById("day").innerHTML = day;
+      document.getElementById("boxes").innerHTML = boxes.join(" ");
+      let code = generateCode();
+      document.getElementById("seed").value = code;
+      localStorage.setItem(storageIdentifier, code);
+      if (numberBoxesUnchecked <= 0) {
+        document.getElementById("removeBoxWidget").setAttribute("disabled", "true");
+      } else {
+        document.getElementById("removeBoxWidget").removeAttribute("disabled");
+      }
+    }
+
+    function addEmptyBox() {
+      numberBoxesUnchecked++;
+      generateBoxes();
+      updatePage();
+    }
+
+    function endDay() {
+      if (numberBoxesUnchecked <= 0) {
+        return alert('Keine freie Box. Du musst erst noch 100 Wörter schreiben!');
+      }
+      day++;
+      numberBoxesChecked++;
+      numberBoxesUnchecked--;
+      generateBoxes();
+      updatePage();
+    }
+
+    function reset() {
+      day = 1;
+      boxes = [];
+      numberBoxesUnchecked = 0;
+      numberBoxesChecked = 0;
+      updatePage();
+    }
+
+    function removeBox() {
+      if (numberBoxesUnchecked <= 0) return;
+      numberBoxesUnchecked--;
+      generateBoxes();
+      updatePage();
+    }
+
+    function loadState(code) {
+      code = code.split('-');
+      day = parseInt(code[0]);
+      numberBoxesChecked = parseInt(code[1]);
+      numberBoxesUnchecked = parseInt(code[2]);
+
+      generateBoxes();
+      updatePage();
+    }
+
+    function generateBoxes() {
+      boxes = [];
+
+      let i = 0;
+      while (i < numberBoxesChecked) {
+        boxes.push(ballotBoxChecked);
+        i++;
+      }
+
+      let j = 0;
+      while (j < numberBoxesUnchecked) {
+        boxes.push(ballotBox);
+        j++;
+      }
+    }
+
+    function generateCode() {
+      return day + "-" + numberBoxesChecked + "-" + numberBoxesUnchecked;
+    }
+  </script>
+
+</body>
+
+</html>
