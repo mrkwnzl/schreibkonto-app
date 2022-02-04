@@ -1,9 +1,10 @@
 button {
-  touch-action: pan-x pan-y;
+  touch-action: none;
 }
 
 .boxes {
   font-size: 2rem;
+  margin-block-start: 0;
 }
 
 .container-boxes {
@@ -14,6 +15,10 @@ button {
 .controls {
   display: flex;
   justify-content: space-between;
+}
+
+.controls-code {
+  text-align: right;
 }
 
 .day-counter {

@@ -85,14 +85,14 @@ function generateBoxes() {
   boxes = [];
 
   let i = 0;
-  while (i < numberBoxesChecked) {
-    boxes.push(ballotBoxChecked);
+  while (i < numberBoxesUnchecked) {
+    boxes.push(ballotBox);
     i++;
   }
 
   let j = 0;
-  while (j < numberBoxesUnchecked) {
-    boxes.push(ballotBox);
+  while (j < numberBoxesChecked) {
+    boxes.push(ballotBoxChecked);
     j++;
   }
 }
