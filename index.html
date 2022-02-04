@@ -4,9 +4,10 @@
 <head>
   <meta charset="utf-8">
   <title>Schreibkonto.app</title>
-  <link rel="stylesheet" href="css/simple.css">
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://kit.fontawesome.com/5bbe73b57d.js" crossorigin="anonymous"></script>
+  <style type="text/css"></style>
 </head>
 
 <body>
@@ -15,13 +16,13 @@
   </header>
   <main>
     <h2>Tag <span id="day"></span></h2>
-    <p><span id="boxes"></span></p>
     <button type="button" onclick="addEmptyBox();"><i class="far fa-plus-square"></i></button>
     <button type="button" onclick="endDay();"><i class="fas fa-moon"></i></button>
     <button type="button" onclick="reset();"><i class="fas fa-undo-alt"></i></button>
     <button id="removeBoxWidget" type="button" onclick="removeBox();"><i class="far fa-minus-square"></i></button>
     <input type="text" id="seed" name="seed" placeholder="0-0-0">
     <button id="loadButton" type="button" value="" onclick="loadState(document.getElementById('seed').value);"><i class="fas fa-upload"></i></button>
+    <p><span id="boxes"></span></p>
   </main>
 
   <script src="scripts/main.js"></script>
