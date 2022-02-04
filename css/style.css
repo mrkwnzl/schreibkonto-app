@@ -16,6 +16,10 @@ button {
   justify-content: space-between;
 }
 
+.day-counter {
+  margin: 0 0 10px 0;
+}
+
 .input-code{
   width: 125px;
   text-align: center;

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>Schreibkonto.app</title>
   <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
   <link rel="stylesheet" href="css/style.css">
@@ -21,16 +21,18 @@
     <p>Schreiben mit der 100-Wörter-Methode</p>
   </header>
   <main>
-    <h3>Tag <span id="day"></span></h3>
-    <div>
-      <button type="button" onclick="addEmptyBox();"><i class="far fa-plus-square"></i></button>
-      <button type="button" onclick="endDay();"><i class="fas fa-moon"></i></button>
-      <button type="button" onclick="reset();"><i class="fas fa-undo-alt"></i></button>
-      <button id="removeBoxWidget" type="button" onclick="removeBox();"><i class="far fa-minus-square"></i></button>
-      <!-- <div>
+    <h3 class="day-counter">Tag <span id="day"></span></h3>
+    <div class="controls">
+      <div>
+        <button type="button" onclick="addEmptyBox();"><i class="far fa-plus-square"></i></button>
+        <button type="button" onclick="endDay();"><i class="fas fa-moon"></i></button>
+        <button type="button" onclick="reset();"><i class="fas fa-undo-alt"></i></button>
+        <button id="removeBoxWidget" type="button" onclick="removeBox();"><i class="far fa-minus-square"></i></button>
+      </div>
+      <div>
         <input class="input-code" type="text" id="seed" name="seed" placeholder="0-0-0">
         <button id="loadButton" type="button" value="" onclick="loadState(document.getElementById('seed').value);"><i class="fas fa-upload"></i></button>
-      </div> -->
+      </div>
     </div>
     <div class="container-boxes">
       <p><span class="boxes" id="boxes"></span></p>
