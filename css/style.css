@@ -1,5 +1,45 @@
+:root {
+  --accent: cornflowerblue;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: cornflowerblue;
+  }
+}
+
+body {
+  font-family: 'FontAwesome', sans-serif
+}
+
+body > header {
+  padding-bottom: 1rem;
+}
+
+body > footer {
+  margin: 0;
+  padding: 0 16px 0 16px;
+}
+
 button {
   touch-action: none;
+  font-family: 'FontAwesome', sans-serif
+}
+
+h3 {
+  margin-bottom: 0;
+}
+
+h3:first-of-type {
+  margin: 0
+}
+
+nav {
+  padding: 0.5rem 0;
+}
+
+option {
+  font-family: 'FontAwesome', sans-serif
 }
 
 .boxes {
@@ -7,8 +47,14 @@ button {
   margin-block-start: 0;
 }
 
+.code {
+  text-align: right;
+  font-size: small;
+  color: grey;
+}
+
 .container-boxes {
-  height: calc(100vh - 430px);
+  height: calc(100vh - 380px);
   overflow-y: scroll;
 }
 
@@ -17,18 +63,34 @@ button {
   justify-content: space-between;
 }
 
-.controls-code {
-  text-align: right;
+.control-button {
+  background: cornflowerblue;
+  width: 85px;
+  padding: 0.4rem 0.9rem;
+  font-size: x-large;
 }
 
 .day-counter {
   margin: 0 0 10px 0;
 }
 
+.emoji-button {
+  text-shadow: 0 0 1px whitesmoke;
+}
+
 .input-code{
-  text-align: center;
+  text-align: left;
 }
 
 .nav-icons {
   width: 20px;
+}
+
+.reset-button {
+  width: 60%;
+  background: crimson;
+}
+
+.theme-select {
+  height: 50px;
 }

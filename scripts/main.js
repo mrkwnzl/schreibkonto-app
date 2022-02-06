@@ -1,84 +1,131 @@
+// Define default variables
 let day = 1;
 let boxes = [];
-let numberBoxesUnchecked = 0;
 let numberBoxesChecked = 0;
+let numberBoxesUnchecked = 0;
+let themeSetting = 0;
+// let darkModeSetting = 0;
 
-const ballotBox = "<i class='far fa-square'></i>";
-const ballotBoxChecked = "<i class='far fa-check-square'></i>";
+const ballotBoxArray = ["&#xf0c8", "🍪", "💰", "🏃‍♀️", "🏃", "🏃‍♂️"]
+const ballotBoxCheckedArray = ["&#xf14a", "🦍", "💍", "🧟‍♀️", "🧟", "🧟‍♂️"]
 
-const storageIdentifier = "app.schreibkonto.code";
+let ballotBox = ballotBoxArray[themeSetting];
+let ballotBoxChecked = ballotBoxCheckedArray[themeSetting];
 
+const storageCode = "app.schreibkonto.code";
+const storageFirstVisit = "app.schreibkonto.firstVisit";
+
+// Initiale page
 initializePage();
 
-document.getElementById("seed").addEventListener("keyup", function (event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("loadButton").click();
-  }
-});
-
+// Functions
 function initializePage() {
-  if (!localStorage.getItem(storageIdentifier)) {
-    loadState("1-0-0");
+  if (!localStorage.getItem(storageCode)) {
+    loadState("1.0.0.0");
   } else {
-    loadState(localStorage.getItem(storageIdentifier));
+    loadState(localStorage.getItem(storageCode));
   }
+
   updatePage();
 }
 
 function updatePage() {
-  document.getElementById("day").innerHTML = day;
-  document.getElementById("boxes").innerHTML = boxes.join(" ");
   let code = generateCode();
-  document.getElementById("seed").value = code;
-  localStorage.setItem(storageIdentifier, code);
-  if (numberBoxesUnchecked <= 0) {
-    document.getElementById("removeBoxWidget").setAttribute("disabled", "true");
-  } else {
-    document.getElementById("removeBoxWidget").removeAttribute("disabled");
+
+  localStorage.setItem(storageCode, code);
+
+  // index.html
+  if (document.title == "Schreibkonto.app") {
+    document.getElementById("day").innerHTML = day;
+    document.getElementById("code").innerHTML = code;
+    document.getElementById("add-box").innerHTML = "<i class='fas fa-plus'></i> <span class='emoji-button'>" + ballotBox + "</span>";
+    document.getElementById("check-box").innerHTML = "<span class='emoji-button'>" + ballotBoxChecked + "</span>";
+    document.getElementById("remove-box").innerHTML = "<i class='fas fa-minus'></i> <span class='emoji-button'>" + ballotBox + "</span>";
+    document.getElementById("boxes").innerHTML = boxes.join(" ");
+    if (numberBoxesUnchecked <= 0) {
+      document.getElementById("remove-box").setAttribute("disabled", "true");
+    } else {
+      document.getElementById("remove-box").removeAttribute("disabled");
+    }
+  }
+
+  // settings.html
+  if (document.title == "Einstellungen | Schreibkonto.app") {
+    document.getElementById("code-input").value = code;
+    document.getElementById("theme-select").innerHTML = generateThemeOptions();
   }
 }
 
-function addEmptyBox() {
+function addBox() {
   numberBoxesUnchecked++;
+
   generateBoxes();
   updatePage();
 }
 
-function endDay() {
-  if (numberBoxesUnchecked <= 0) {
-    return alert('Keine freie Box. Du musst erst noch 100 Wörter schreiben!');
-  }
+function checkBox() {
+  if (numberBoxesUnchecked <= 0) return alert('Kein Guthaben mehr. Du musst erst noch 100 Wörter schreiben!');
+
   day++;
   numberBoxesChecked++;
   numberBoxesUnchecked--;
+
   generateBoxes();
   updatePage();
 }
 
-function reset() {
+function resetAll() {
+  if (!window.confirm("Bist du sicher, dass du dein Schreibkonto und Einstellungen zurücksetzen möchtest?")) return;
   day = 1;
   boxes = [];
-  numberBoxesUnchecked = 0;
   numberBoxesChecked = 0;
+  numberBoxesUnchecked = 0;
+  themeSetting = 0;
+  // darkModeSetting = 0;
+
   updatePage();
+  window.location.href = "index.html";
+}
+
+function resetBank() {
+  if (!window.confirm("Bist du sicher, dass du dein Schreibkonto zurücksetzen möchtest?")) return;
+  day = 1;
+  boxes = [];
+  numberBoxesChecked = 0;
+  numberBoxesUnchecked = 0;
+
+  updatePage();
+  window.location.href = "index.html";
 }
 
 function removeBox() {
   if (numberBoxesUnchecked <= 0) return;
+
   numberBoxesUnchecked--;
+
   generateBoxes();
   updatePage();
 }
 
 function loadState(code) {
-  code = code.split('-');
+  code = code.split('.');
   day = parseInt(code[0]);
-  numberBoxesChecked = parseInt(code[1]);
-  numberBoxesUnchecked = parseInt(code[2]);
+  numberBoxesUnchecked = parseInt(code[1]);
+  numberBoxesChecked = parseInt(code[2]);
+  themeSetting = parseInt(code[3]);
+  // darkModeSetting = parseInt(code[4]);
+  ballotBox = ballotBoxArray[themeSetting];
+  ballotBoxChecked = ballotBoxCheckedArray[themeSetting];
 
   generateBoxes();
   updatePage();
+}
+
+function loadStateButton(code) {
+  let regCode = new RegExp("\\d.\\d.\\d.\\d");
+  if (!regCode.test(code)) return alert('Code ungültig');
+  loadState(code);
+  window.location.href = "index.html";
 }
 
 function generateBoxes() {
@@ -98,5 +145,35 @@ function generateBoxes() {
 }
 
 function generateCode() {
-  return day + "-" + numberBoxesChecked + "-" + numberBoxesUnchecked;
+  // return day + "." + numberBoxesUnchecked + "." + numberBoxesChecked + "." + themeSetting + "." + darkModeSetting;
+  return day + "." + numberBoxesUnchecked + "." + numberBoxesChecked + "." + themeSetting;
+}
+
+function generateThemeOptions() {
+  let options = "<option value='0'>Checkboxen</option>";
+  let index = 1;
+
+  while (index < ballotBoxArray.length) {
+    let selected = (index == themeSetting) ? "selected" : "";
+    options = options + `<option value='${index}'` + selected + ">" + ballotBoxArray[index] + " | " + ballotBoxCheckedArray[index] + "</option>";
+    index++;
+  }
+
+  return options;
+}
+
+// Event listener
+// settings.html
+if (document.title == "Einstellungen | Schreibkonto.app") {
+  document.getElementById("code-input").addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("loadButton").click();
+    }
+  });
+
+  document.getElementById("theme-select").addEventListener("change", function (event) {
+    themeSetting = document.getElementById("theme-select").value;
+    updatePage();
+  });
 }

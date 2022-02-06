@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Einstellungen | Schreibkonto.app</title>
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/5bbe73b57d.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Schreibkonto.app</h1>
+    <p>Schreiben mit der 100-Wörter-Methode</p>
+    <nav>
+      <a href="index.html"><i class="nav-icons fas fa-home"></i></a>
+      <a href="help.html"><i class="nav-icons fas fa-question"></i></a>
+      <a href="settings.html"><i class="nav-icons fas fa-cog"></i></a>
+      <a href="privacy.html"><i class="nav-icons fas fa-user-shield"></i></a>
+    </nav>
+  </header>
+  <main>
+    <h3>Thema auswählen</h3>
+    <p>Falls nüchterne Checkboxen dich nicht so motivieren, kannst du hier ein anderes Thema wählen. Vielleicht fütterst du lieber einen Gorilla mit Cookies (🍪 | 🦍), sparst Geld für etwas Bling-Bling in deinem Leben (💰 | 💍) oder rennst vor Zombies davon (🏃‍♀️ | 🧟‍♀️). Das erste Symbol ist immer dein Guthaben, das zweite deine täglichen bezahlten Schreibkosten.</p>
+    <select class="theme-select" name="theme-select" id="theme-select"></select>
+    <!-- <h3>Dunkelmodus</h3>
+    <p>Hier kannst du deine Vorlieben für den Dunkelmodus einstellen.</p>
+    <select class="dark-mode-select" name="dark-mode-select" id="dark-mode-select"></select> -->
+    <h3>Einstellungen laden</h3>
+    <p>Alle Daten werden lokal auf deinem Gerät gespeichert. Wenn du das Gerät wechseln möchtest, trage hier deinen Code vom anderen Gerät ein und die Einstellungen werden übertragen.</p>
+    <input class="input-code" type="text" id="code-input" name="code-input" placeholder="1.0.0.0">
+    <button id="loadButton" type="button" value="" onclick="loadStateButton(document.getElementById('code-input').value);"><i class="fas fa-upload"></i></button>
+    <h3>Einstellungen zurücksetzen</h3>
+    <button class="reset-button" id="reset-bank" type="button" title="Nur Schreibkonto zurücksetzen" onclick="resetBank();">Schreibkonto zurücksetzen</button><br>
+    <button class="reset-button" id="reset-all" type="button" title="Schreibkonto und Einstellungen zurücksetzen" onclick="resetAll();">Schreibkonto und Einstellungen zurücksetzen</button>
+  </main>
+  <footer>
+    <p>Erstellt von Marko Wenzel, mit Hilfe von <a href="https://simplecss.org">simple.css</a></p>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>
