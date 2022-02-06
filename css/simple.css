@@ -524,7 +524,7 @@ pre code {
 
 @media only screen and (max-width: 750px) {
   .container-boxes {
-    height: calc(100vh - 340px);
+    height: calc(100vh - 400px);
     overflow-y: scroll;
   }
 }
