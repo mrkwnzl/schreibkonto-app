@@ -124,7 +124,7 @@ function loadState(code) {
 }
 
 function loadStateButton(code) {
-  let regCode = new RegExp("\\d.\\d.\\d.\\d");
+  let regCode = new RegExp("\\d+.\\d+.\\d+.\\d+");
   if (!regCode.test(code)) return alert('Code ungültig');
   loadState(code);
   window.location.href = "index.html";
