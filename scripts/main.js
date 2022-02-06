@@ -6,6 +6,8 @@ let numberBoxesUnchecked = 0;
 let themeSetting = 0;
 // let darkModeSetting = 0;
 
+const version = "v1.0";
+
 const ballotBoxArray = ["&#xf0c8", "🍪", "💰", "🏃‍♀️", "🏃", "🏃‍♂️"]
 const ballotBoxCheckedArray = ["&#xf14a", "🦍", "💍", "🧟‍♀️", "🧟", "🧟‍♂️"]
 
@@ -33,6 +35,8 @@ function updatePage() {
   let code = generateCode();
 
   localStorage.setItem(storageCode, code);
+
+  document.getElementById("version").innerHTML = version;
 
   // index.html
   if (document.title == "Schreibkonto.app") {

@@ -109,11 +109,11 @@ h2 {
 h3 {
   font-size: 2rem;
   margin-top: 3rem;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 }
 
 h3:first-of-type {
-  margin: 0;
+  margin: 0 0 1rem 0;
 }
 
 h4 {
@@ -253,7 +253,7 @@ nav a:hover {
   nav a {
     border: none;
     padding: 0;
-    color: var(--accent);
+    color: var(--text);
     text-decoration: underline;
     line-height: 1;
   }
@@ -518,8 +518,8 @@ pre code {
 }
 
 .container-boxes {
-  min-height: calc(100vh - 430px);
-  /* overflow-y: scroll; */
+  height: calc(100vh - 400px);
+  overflow-y: scroll;
 }
 
 .controls {
@@ -569,4 +569,8 @@ pre code {
 
 .theme-select {
   height: 50px;
+}
+
+.version {
+  color: darkgrey;
 }

@@ -28,16 +28,17 @@
     <!-- <h3>Dunkelmodus</h3>
     <p>Hier kannst du deine Vorlieben für den Dunkelmodus einstellen.</p>
     <select class="dark-mode-select" name="dark-mode-select" id="dark-mode-select"></select> -->
-    <h3>Einstellungen laden</h3>
+    <h3>Schreibkonto laden</h3>
     <p>Alle Daten werden lokal auf deinem Gerät gespeichert. Wenn du das Gerät wechseln möchtest, trage hier deinen Code vom anderen Gerät ein und die Einstellungen werden übertragen.</p>
     <input class="input-code" type="text" id="code-input" name="code-input" placeholder="1.0.0.0">
     <button id="loadButton" type="button" value="" onclick="loadStateButton(document.getElementById('code-input').value);"><i class="fas fa-upload"></i></button>
     <h3>Einstellungen zurücksetzen</h3>
+    <p>Danger Zone! Änderungen können nur mit deinem persönlichen Code rückgängig gemacht werden.</p>
     <button class="reset-button" id="reset-bank" type="button" title="Nur Schreibkonto zurücksetzen" onclick="resetBank();">Schreibkonto zurücksetzen</button><br>
     <button class="reset-button" id="reset-all" type="button" title="Schreibkonto und Einstellungen zurücksetzen" onclick="resetAll();">Schreibkonto und Einstellungen zurücksetzen</button>
   </main>
   <footer>
-    <p>Erstellt von Marko Wenzel, mit Hilfe von <a href="https://simplecss.org">simple.css</a></p>
+    <p>Erstellt von Marko Wenzel, mit Hilfe von <a href="https://simplecss.org">simple.css</a>. <span class="version" id="version"></span></p>
   </footer>
 
   <script src="scripts/main.js"></script>
