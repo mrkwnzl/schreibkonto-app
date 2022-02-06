@@ -22,15 +22,19 @@
     </nav>
   </header>
   <main>
-    <h3 class="day-counter">Tag <span id="day"></span></h3>
+    <div class="controls">
+      <div>
+        <h3 class="day-counter">Tag <span id="day"></span></h3>
+      </div>
+      <div class="code">
+        <p class="no-margin">Code: <span id="code"></span></p>
+      </div>
+    </div>
     <div class="controls">
       <div>
         <button class="control-button" id="add-box" type="button" title="Guthaben hinzufügen" onclick="addBox();"></button>
         <button class="control-button" id="check-box" type="button" title="Guthaben abhaken" onclick="checkBox();"></button>
         <button class="control-button" id="remove-box" type="button" title="Guthaben entfernen" onclick="removeBox();"></button>
-      </div>
-      <div class="code">
-        <p>Code: <span id="code"></span></p>
       </div>
     </div>
     <div class="container-boxes">

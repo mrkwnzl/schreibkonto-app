@@ -86,6 +86,10 @@ option {
   width: 20px;
 }
 
+.no-margin {
+  margin: 0;
+}
+
 .reset-button {
   width: 60%;
   background: crimson;
