@@ -36,7 +36,7 @@ function updatePage() {
 
   localStorage.setItem(storageCode, code);
 
-  document.getElementById("version").innerHTML = version;
+  // document.getElementById("version").innerHTML = version;
 
   // index.html
   if (document.title == "Schreibkonto.app") {

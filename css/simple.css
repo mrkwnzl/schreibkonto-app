@@ -518,8 +518,15 @@ pre code {
 }
 
 .container-boxes {
-  height: calc(100vh - 400px);
+  height: calc(100vh - 340px);
   overflow-y: scroll;
+}
+
+@media only screen and (max-width: 750px) {
+  .container-boxes {
+    height: calc(100vh - 340px);
+    overflow-y: scroll;
+  }
 }
 
 .controls {
