@@ -518,7 +518,7 @@ pre code {
 }
 
 .container-boxes {
-  height: calc(100vh - 380px);
+  height: calc(100vh - 400px);
   overflow-y: scroll;
 }
 
