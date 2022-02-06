@@ -546,6 +546,12 @@ pre code {
   text-align: left;
 }
 
+@media only screen and (max-width: 750px) {
+  .input-code {
+    width: calc(100% - 50px);
+  }
+}
+
 .nav-icons {
   width: 20px;
 }
@@ -553,6 +559,12 @@ pre code {
 .reset-button {
   width: 60%;
   background: crimson;
+}
+
+@media only screen and (max-width: 750px) {
+  .reset-button {
+    width: 100%;
+  }
 }
 
 .theme-select {
