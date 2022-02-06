@@ -12,7 +12,7 @@
   --text: #212121;
   --text-light: #585858;
   --border: #d8dae1;
-  --accent: #0d47a1;
+  --accent: cornflowerblue;
   --code: #d81b60;
   --preformatted: #444;
   --marked: #ffdd33;
@@ -27,7 +27,7 @@
     --text: #dcdcdc;
     --text-light: #ababab;
     --border: #666;
-    --accent: #ffb300;
+    --accent: cornflowerblue;
     --code: #f06292;
     --preformatted: #ccc;
     --disabled: #111;
@@ -47,6 +47,7 @@ html {
 
 /* Make the body a nice central block */
 body {
+  font-family: 'FontAwesome', sans-serif;
   color: var(--text);
   background: var(--bg);
   font-size: 1.15rem;
@@ -66,7 +67,7 @@ header {
   background: var(--accent-bg);
   border-bottom: 1px solid var(--border);
   text-align: center;
-  padding: 0 0.5rem 2rem 0.5rem;
+  padding: 0 0.5rem 1rem 0.5rem;
   grid-column: 1 / -1;
   box-sizing: border-box;
 }
@@ -87,8 +88,8 @@ main {
 }
 
 footer {
-  margin-top: 4rem;
-  padding: 2rem 1rem 1.5rem 1rem;
+  margin: o;
+  padding: 0 1rem 1.5rem 0;
   color: var(--text-light);
   font-size: 0.9rem;
   text-align: center;
@@ -108,6 +109,11 @@ h2 {
 h3 {
   font-size: 2rem;
   margin-top: 3rem;
+  margin-bottom: 0;
+}
+
+h3:first-of-type {
+  margin: 0;
 }
 
 h4 {
@@ -171,6 +177,8 @@ input[type="button"] {
   color: var(--bg);
   padding: 0.7rem 0.9rem;
   margin: 0.5rem 0;
+  touch-action: none;
+  font-family: 'FontAwesome', sans-serif;
 }
 
 a button[disabled],
@@ -221,7 +229,7 @@ input[type="button"]:enabled:hover {
 nav {
   font-size: 1rem;
   line-height: 2;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 
 nav a,
@@ -338,6 +346,10 @@ select {
 
 select[multiple] {
   background-image: none !important;
+}
+
+option {
+  font-family: 'FontAwesome', sans-serif
 }
 
 /* checkbox and radio button style */
@@ -490,4 +502,59 @@ pre code {
   background: none;
   margin: 0;
   padding: 0;
+}
+
+/* Schreibkonto.app */
+
+.boxes {
+  font-size: 2rem;
+  margin-block-start: 0;
+}
+
+.code {
+  text-align: right;
+  font-size: small;
+  color: grey;
+}
+
+.container-boxes {
+  height: calc(100vh - 380px);
+  overflow-y: scroll;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.control-button {
+  background: cornflowerblue;
+  width: 85px;
+  padding: 0.4rem 0.9rem;
+  font-size: x-large;
+}
+
+.day-counter {
+  margin: 0 0 10px 0;
+}
+
+.emoji-button {
+  text-shadow: 0 0 1px whitesmoke;
+}
+
+.input-code{
+  text-align: left;
+}
+
+.nav-icons {
+  width: 20px;
+}
+
+.reset-button {
+  width: 60%;
+  background: crimson;
+}
+
+.theme-select {
+  height: 50px;
 }
