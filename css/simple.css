@@ -518,8 +518,8 @@ pre code {
 }
 
 .container-boxes {
-  height: calc(100vh - 420px);
-  overflow-y: scroll;
+  min-height: calc(100vh - 430px);
+  /* overflow-y: scroll; */
 }
 
 .controls {
