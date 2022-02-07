@@ -36,8 +36,6 @@ function updatePage() {
 
   localStorage.setItem(storageCode, code);
 
-  document.getElementById("version").innerHTML = version;
-
   // index.html
   if (document.title == "Schreibkonto.app") {
     document.getElementById("day").innerHTML = day;
@@ -57,6 +55,11 @@ function updatePage() {
   if (document.title == "Einstellungen | Schreibkonto.app") {
     document.getElementById("code-input").value = code;
     document.getElementById("theme-select").innerHTML = generateThemeOptions();
+  }
+
+  // privacy.html
+  if (document.title == "Kontakt & Info | Schreibkonto.app") {
+    document.getElementById("version").innerHTML = version;
   }
 }
 
