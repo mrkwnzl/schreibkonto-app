@@ -6,7 +6,7 @@ let numberBoxesUnchecked = 0;
 let themeSetting = 0;
 // let darkModeSetting = 0;
 
-const version = "v0.1.1";
+const version = "v0.1.2";
 
 const ballotBoxArray = ["&#xf0c8", "🍪", "💰", "🏃‍♀️", "🏃", "🏃‍♂️", "🥚", "🧠", "🏋️‍♀️", "🏋️", "🏋️‍♂️", "🍔"]
 const ballotBoxCheckedArray = ["&#xf14a", "🦍", "💍", "👾", "👾", "👾", "🐣", "🧟‍♂️", "🏆", "🏆", "🏆", "🤤"]
@@ -57,7 +57,7 @@ function updatePage() {
     document.getElementById("theme-select").innerHTML = generateThemeOptions();
   }
 
-  // privacy.html
+  // contact.html
   if (document.title == "Kontakt & Info | Schreibkonto.app") {
     document.getElementById("version").innerHTML = version;
   }
