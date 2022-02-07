@@ -8,8 +8,8 @@ let themeSetting = 0;
 
 const version = "v1.0";
 
-const ballotBoxArray = ["&#xf0c8", "🍪", "💰", "🏃‍♀️", "🏃", "🏃‍♂️"]
-const ballotBoxCheckedArray = ["&#xf14a", "🦍", "💍", "🧟‍♀️", "🧟", "🧟‍♂️"]
+const ballotBoxArray = ["&#xf0c8", "🍪", "💰", "🏃‍♀️", "🏃", "🏃‍♂️", "🥚", "🧠", "🏋️‍♀️", "🏋️", "🏋️‍♂️", "🍔"]
+const ballotBoxCheckedArray = ["&#xf14a", "🦍", "💍", "👾", "👾", "👾", "🐣", "🧟‍♂️", "🏆", "🏆", "🏆", "🤤"]
 
 let ballotBox = ballotBoxArray[themeSetting];
 let ballotBoxChecked = ballotBoxCheckedArray[themeSetting];
@@ -35,6 +35,8 @@ function updatePage() {
   let code = generateCode();
 
   localStorage.setItem(storageCode, code);
+
+  document.getElementById("version").innerHTML = version;
 
   // index.html
   if (document.title == "Schreibkonto.app") {
@@ -125,7 +127,7 @@ function loadState(code) {
 
 function loadStateButton(code) {
   let regCode = new RegExp("\\d+.\\d+.\\d+.\\d+");
-  if (!regCode.test(code)) return alert('Code ungültig');
+  if (!regCode.test(code) || code.split(".")[3] > ballotBoxArray.length) return alert('Code ungültig');
   loadState(code);
   window.location.href = "index.html";
 }
