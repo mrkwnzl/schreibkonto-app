@@ -6,13 +6,15 @@ let numberBoxesUnchecked = 0;
 let themeSetting = 0;
 // let darkModeSetting = 0;
 
-const version = "v0.1.2";
+const version = "v0.2.0";
 
-const ballotBoxArray = ["&#xf0c8", "🍪", "💰", "🏃‍♀️", "🏃", "🏃‍♂️", "🥚", "🧠", "🏋️‍♀️", "🏋️", "🏋️‍♂️", "🍔"]
-const ballotBoxCheckedArray = ["&#xf14a", "🦍", "💍", "👾", "👾", "👾", "🐣", "🧟‍♂️", "🏆", "🏆", "🏆", "🤤"]
+const ballotBoxArray = ["&#xf0c8", "🍪", "💰", "🏃‍♀️", "🏃", "🏃‍♂️", "🥚", "🧠", "🏋️‍♀️", "🏋️", "🏋️‍♂️", "🍔", "🙀"]
+const ballotBoxCheckedArray = ["&#xf14a", "🦍", "💍", "👾", "👾", "👾", "🐣", "🧟‍♂️", "🏆", "🏆", "🏆", "🤤", "😸"]
 
-let ballotBox = ballotBoxArray[themeSetting];
-let ballotBoxChecked = ballotBoxCheckedArray[themeSetting];
+let ballotBox;
+let ballotBoxChecked;
+
+console.log(ballotBox);
 
 const storageCode = "app.schreibkonto.code";
 const storageFirstVisit = "app.schreibkonto.firstVisit";
@@ -121,8 +123,8 @@ function loadState(code) {
   numberBoxesChecked = parseInt(code[2]);
   themeSetting = parseInt(code[3]);
   // darkModeSetting = parseInt(code[4]);
-  ballotBox = ballotBoxArray[themeSetting];
-  ballotBoxChecked = ballotBoxCheckedArray[themeSetting];
+  ballotBox = "<span class='ballot-box'>" + ballotBoxArray[themeSetting] + "</span>";
+  ballotBoxChecked = "<span class='ballot-box'>" + ballotBoxCheckedArray[themeSetting] + "</span>";
 
   generateBoxes();
   updatePage();

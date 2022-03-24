@@ -507,10 +507,19 @@ pre code {
 
 /* Schreibkonto.app */
 
+.ballot-box {
+  width: 35px;
+  text-align: center;
+}
+
 .boxes {
   font-size: 2rem;
   margin-block-start: 0;
   margin-block-end: 0;
+}
+
+.boxes span {
+  display: inline-block;
 }
 
 .code {
