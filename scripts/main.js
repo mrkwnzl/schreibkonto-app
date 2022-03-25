@@ -4,9 +4,8 @@ let boxes = [];
 let numberBoxesChecked = 0;
 let numberBoxesUnchecked = 0;
 let themeSetting = 0;
-// let darkModeSetting = 0;
 
-const version = "v0.2.0";
+const version = "v0.3.0";
 
 const ballotBoxArray = ["&#xf0c8", "🍪", "💰", "🏃‍♀️", "🏃", "🏃‍♂️", "🥚", "🧠", "🏋️‍♀️", "🏋️", "🏋️‍♂️", "🍔", "🙀"]
 const ballotBoxCheckedArray = ["&#xf14a", "🦍", "💍", "👾", "👾", "👾", "🐣", "🧟‍♂️", "🏆", "🏆", "🏆", "🤤", "😸"]
@@ -14,10 +13,7 @@ const ballotBoxCheckedArray = ["&#xf14a", "🦍", "💍", "👾", "👾", "👾"
 let ballotBox;
 let ballotBoxChecked;
 
-console.log(ballotBox);
-
 const storageCode = "app.schreibkonto.code";
-const storageFirstVisit = "app.schreibkonto.firstVisit";
 
 // Initiale page
 initializePage();
@@ -45,6 +41,11 @@ function updatePage() {
     document.getElementById("add-box").innerHTML = "<i class='fas fa-plus'></i> <span class='emoji-button'>" + ballotBox + "</span>";
     document.getElementById("check-box").innerHTML = "<span class='emoji-button'>" + ballotBoxChecked + "</span>";
     document.getElementById("remove-box").innerHTML = "<i class='fas fa-minus'></i> <span class='emoji-button'>" + ballotBox + "</span>";
+    if (localStorage.getItem(storageCode) == "1.0.0.0") {
+      document.getElementById("welcome-text").innerHTML = firstVisitText();
+    } else {
+      document.getElementById("welcome-text").innerHTML = "";
+    }
     document.getElementById("boxes").innerHTML = boxes.join(" ");
     if (numberBoxesUnchecked <= 0) {
       document.getElementById("remove-box").setAttribute("disabled", "true");
@@ -62,6 +63,11 @@ function updatePage() {
   // contact.html
   if (document.title == "Kontakt & Info | Schreibkonto.app") {
     document.getElementById("version").innerHTML = version;
+  }
+
+  // first-visit.html
+  if (document.title == "Erster Besuch | Schreibkonto.app") {
+
   }
 }
 
@@ -169,6 +175,23 @@ function generateThemeOptions() {
   }
 
   return options;
+}
+
+function goToButton(target) {
+  window.location.href = target;
+}
+
+function firstVisitText() {
+  const firstVisitText = `
+  <h3>Herzlich Willkommen bei Schreibkonto.app</h3>
+  <p>Wenn du das erste Mal hier bist, würde ich dir empfehlen, in die Anleitung zu schauen. Dort wird die 100-Wörter-Methode und die App erklärt.</p>
+  <p>Wenn du die App schon in einem anderen Browser benutzt hast, geh zu den Einstellungen, um deinen persönlichen Code einzugeben und deinen Stand zu übertragen.</p>
+  <p>Wenn du schon weißt, wie die 100-Wörter-Methode funktioniert und du neu beginnen willst, kannst du auch direkt einfach loslegen.</p>
+  <button id="go-to-manual" type="button" title="Zur Anleitung" onclick="goToButton('help.html');">Zur Anleitung</button>
+  <button id="go-to-settings" type="button" title="Zu den Einstellungen" onclick="goToButton('settings.html');">Zu den Einstellungen</button>
+  `;
+
+  return firstVisitText;
 }
 
 // Event listener
