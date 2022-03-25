@@ -570,6 +570,11 @@ pre code {
   width: 20px;
 }
 
+.reference {
+  margin-left: 2em; 
+  text-indent: -2em 
+}
+
 .reset-button {
   width: 60%;
   background: crimson;
