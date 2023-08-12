@@ -5,7 +5,7 @@ let numberBoxesChecked = 0;
 let numberBoxesUnchecked = 0;
 let themeSetting = 0;
 
-const version = "v0.3.1";
+const version = "v0.4.0";
 
 const ballotBoxArray = ["&#xf0c8", "🍪", "💰", "🏃‍♀️", "🏃", "🏃‍♂️", "🥚", "🧠", "🏋️‍♀️", "🏋️", "🏋️‍♂️", "🍔", "🙀"]
 const ballotBoxCheckedArray = ["&#xf14a", "🦍", "💍", "👾", "👾", "👾", "🐣", "🧟‍♂️", "🏆", "🏆", "🏆", "🤤", "😸"]
